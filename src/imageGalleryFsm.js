@@ -78,7 +78,7 @@ export const imageGalleryFsmDef = {
       const renderGalleryAction = renderAction({ query, items, photo, gallery: "loading" });
 
       return {
-        outputs: [searchCommand, renderGalleryAction.outputs],
+        outputs: [searchCommand].concat(renderGalleryAction.outputs),
         updates: NO_STATE_UPDATE
       };
     },

@@ -61,10 +61,10 @@ export const imageGalleryReactMachineDef = {
       effectHandlers
         .runSearchQuery(query)
         .then(data => {
-          next("SEARCH_SUCCESS")(data.items);
+          next(["SEARCH_SUCCESS",data.items]);
         })
         .catch(error => {
-          next("SEARCH_FAILURE")(void 0);
+          next(["SEARCH_FAILURE", void 0]);
         });
     }
   },
