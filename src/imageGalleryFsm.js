@@ -1,8 +1,6 @@
 import { NO_OUTPUT } from "state-transducer";
 import { COMMAND_SEARCH, NO_ACTIONS, NO_STATE_UPDATE } from "./properties";
-import { applyJSONpatch, renderGalleryApp, renderAction} from "./helpers";
-import React from "react";
-
+import { applyJSONpatch, renderAction, renderGalleryApp } from "./helpers";
 
 export const imageGalleryFsmDef = {
   events: [
@@ -88,6 +86,5 @@ export const imageGalleryFsmDef = {
     start: renderGalleryApp("start")
   },
   updateState: applyJSONpatch,
-  options: {},
 }
 

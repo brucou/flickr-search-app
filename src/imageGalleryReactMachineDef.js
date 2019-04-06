@@ -1,6 +1,6 @@
 import { COMMAND_RENDER, COMMAND_SEARCH, NO_INTENT } from "./properties"
-import { filter, map, startWith } from "rxjs/operators"
-import { runSearchQuery, destructureEvent } from "./helpers"
+import { filter, map } from "rxjs/operators"
+import { destructureEvent, runSearchQuery } from "./helpers"
 import { INIT_EVENT } from "state-transducer"
 import { Subject } from "rxjs/index"
 import { GalleryApp } from "./imageGalleryComponent"
@@ -9,11 +9,11 @@ import React from "react";
 
 const flipping = new Flipping();
 const stateTransducerRxAdapter = {
-  subjectFactory : () => new Subject()
+  subjectFactory: () => new Subject()
 };
 
 export const imageGalleryReactMachineDef = {
-  options: { },
+  options: { initialEvent: ["START"] },
   renderWith: GalleryApp,
   eventHandler: stateTransducerRxAdapter,
   preprocessor: rawEventSource =>
@@ -54,14 +54,14 @@ export const imageGalleryReactMachineDef = {
         return NO_INTENT;
       }),
       filter(x => x !== NO_INTENT),
-      startWith({ START: void 0 })
+      // startWith({ START: void 0 })
     ),
   commandHandlers: {
     [COMMAND_SEARCH]: (next, query, effectHandlers) => {
       effectHandlers
         .runSearchQuery(query)
         .then(data => {
-          next(["SEARCH_SUCCESS",data.items]);
+          next(["SEARCH_SUCCESS", data.items]);
         })
         .catch(error => {
           next(["SEARCH_FAILURE", void 0]);

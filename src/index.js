@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { Machine } from "react-state-driven"
@@ -20,6 +19,7 @@ const fsm = createStateMachine(
 );
 
 ReactDOM.render(
+  // That is the same as <Machine fsm=... preprocessor=... ... />
   h(Machine, Object.assign({}, imageGalleryReactMachineDef, { fsm }), []),
   document.getElementById("root")
 );
