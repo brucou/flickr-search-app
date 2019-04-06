@@ -22,6 +22,8 @@ class Form extends React.Component {
     }[galleryState] || "Search";
     const isLoading = galleryState === "loading";
 
+    // NTH: I could get rid of the formRef and have this as a functional component?
+    // Leaving it for now, as it serves as an example of that precisely in a preprocessor context
     return form(".ui-form", { onSubmit: ev => onSubmit(ev, this.formRef) }, [
       input(".ui-input", {
         ref: this.formRef,
@@ -83,20 +85,12 @@ export function GalleryApp(props) {
   const { query, photo, items, next, gallery: galleryState } = props;
 
   return div(".ui-app", { "data-state": galleryState }, [
-    h(
-      Form,
-      {
-        galleryState,
-        onSubmit: (ev, formRef) => next(["onSubmit", ev, formRef]),
-        onClick: ev => next(["onCancelClick"])
-      },
-      []
-    ),
-    h(
-      Gallery,
-      { galleryState, items, onClick: item => next(["onGalleryClick", item]) },
-      []
-    ),
+    h(Form, {
+      galleryState,
+      onSubmit: (ev, formRef) => next(["onSubmit", ev, formRef]),
+      onClick: ev => next(["onCancelClick"])
+    }, []),
+    h(Gallery, { galleryState, items, onClick: item => next(["onGalleryClick", item]) }, []),
     h(Photo, { galleryState, photo, onClick: ev => next(["onPhotoClick"]) }, [])
   ]);
 }
