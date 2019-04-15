@@ -1,8 +1,8 @@
 import { COMMAND_RENDER, COMMAND_SEARCH, NO_INTENT } from "./properties"
 import { filter, map } from "rxjs/operators"
+import { Subject } from "rxjs/index"
 import { destructureEvent, runSearchQuery } from "./helpers"
 import { INIT_EVENT } from "state-transducer"
-import { Subject } from "rxjs/index"
 import { GalleryApp } from "./imageGalleryComponent"
 import Flipping from "flipping"
 import React from "react";
