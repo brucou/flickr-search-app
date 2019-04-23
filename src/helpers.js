@@ -1,6 +1,5 @@
 import { applyPatch } from "json-patch-es6";
 import { COMMAND_RENDER, NO_STATE_UPDATE } from "./properties";
-import React from "react";
 import fetchJsonp from "fetch-jsonp";
 
 /**

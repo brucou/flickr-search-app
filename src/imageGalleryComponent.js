@@ -3,7 +3,7 @@ import h from "react-hyperscript";
 import hyperscript from "hyperscript-helpers";
 import "./gallery.scss";
 
-const { div, button, span, input, form, section, img, h1 } = hyperscript(h);
+const { div, button, span, input, form, section, img } = hyperscript(h);
 
 class Form extends React.Component {
   constructor(props) {
